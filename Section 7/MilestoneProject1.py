@@ -1,4 +1,6 @@
 from IPython.display import clear_output
+import random
+
 test_board = ["#", " "," "," "," "," "," "," "," "," "]
 def display_board(board):
     clear_output()
@@ -30,5 +32,38 @@ def player_input():
     print(f"Player2 marker is: {player2}")
     return [player1,player2]
 
-def place_maker(board,marker,position):
-    
+def place_marker(board,marker,position):
+    board[position]=marker
+    display_board(board)
+
+test_board = ['#','X','O','X','O','X','O','X','O','X']
+def win_check(board,mark):
+    if board[7]==mark and board[8]==mark and board[9]==mark:
+        return True
+    elif board[4]==mark and board[5]==mark and board[6]==mark:
+        return True
+    elif board[1]==mark and board[2]==mark and board[3]==mark:
+        return True
+    elif board[7]==mark and board[4]==mark and board[1]==mark:
+        return True
+    elif board[8]==mark and board[5]==mark and board[2]==mark:
+        return True
+    elif board[9]==mark and board[6]==mark and board[3]==mark:
+        return True
+    elif board[7]==mark and board[5]==mark and board[3]==mark:
+        return True
+    elif board[1]==mark and board[5]==mark and board[9]==mark:
+        return True
+    else:
+        return False
+
+def choose_first():
+    choice = random.randint(1,2)
+    print(f"Player{choice} will choose first")
+    return choice
+
+def space_check(board,position):
+    if board[position] != "":
+        return True
+    else:
+        return False
