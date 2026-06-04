@@ -67,3 +67,17 @@ def space_check(board,position):
         return True
     else:
         return False
+    
+def full_board_check(board):
+    if "" in board:
+        return False
+    return True
+
+def player_choice(board):
+    playerChoice='wrong choice'
+    playerChoice = input("Enter position for your mark (1-9): ")
+
+    while playerChoice.isdigit()==False:
+        if playerChoice.isdigit():
+            if int(playerChoice) in range(1,10):
+                
